@@ -10,6 +10,7 @@ const LoginPage = () =>{
 const navigate = useNavigate();
 const [value,setValue]=useState('');
 const [role,setRole]=useState('');
+const [pass,setPass] =useState('');
 const[disabled,setDisabled]=useState(false);
 let data=[];
 const { Header, Footer, Sider, Content } = Layout;
@@ -98,11 +99,9 @@ return (
             </Form.Item >
             <Form.Item  name="enter password"  rules={[
               { required: true, message: 'Please enter user password!' },
-              {pattern:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,30}$/,
-              message:'Please enter a password with Min 1 uppercase letter ,Min 1 lowercase letter ,Min 1 special character, Min 1 number, Min 8 characters,Max 30 characters'
-            }
+              
               ]}>
-                <Input.Password placeholder='enter password' style={{ width: 450,marginRight:'125px' }}></Input.Password>
+                <Input.Password placeholder='enter password' style={{ width: 450,marginRight:'125px' }} onChange={(e)=>setPass(e.target.value)}></Input.Password>
             </Form.Item>
             <Form.Item  name="enter role">
             <Select
@@ -129,7 +128,7 @@ return (
             </Form.Item>
             {disabled && <Typography style={{color:'red'}}>User does not exist </Typography>}
             <Form.Item>
-                <Button block type="primary" htmlType='submit' style={{width:'150px'}} onClick={()=>navigate('/dashboard',{state:data})} disabled={value&&role&&!disabled?false:true}> Login
+                <Button block type="primary" htmlType='submit' style={{width:'150px',marginRight:'58px'}} onClick={()=>navigate('/dashboard',{state:data})} disabled={value&&role&&pass&&!disabled?false:true}> Login
                 </Button></Form.Item>
             </Form>
             </div>

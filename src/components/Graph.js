@@ -60,10 +60,11 @@ const [show,setShow]=useState(false);
   return(
   <div data-testid='graph'>
     <div >
-    <Typography style={{}} >select a date</Typography>
+    <Typography style={{color:'darkblue'}} >select a date</Typography>
       &nbsp;&nbsp;&nbsp;
-    <Input type='date'  value={value} onChange={(e)=>setValue(e.target.value)}></Input>
+    <Input type='date'  value={value} onChange={(e)=>setValue(e.target.value)} style={{color:'lightblue'}}></Input>
     </div>
+    <br/>
     <div>
     {show?
     <Typography style={{marginTop:'100px'}}>Data is not available with respect to this date.Please select another date</Typography>:
