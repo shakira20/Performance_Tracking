@@ -7,14 +7,15 @@ import { Input,TextField, Typography } from '@mui/material';
 const Gragh = () => {
 
   
-
+  const list = JSON.parse(sessionStorage.getItem("performance"));
 const [data, setData] = useState([]);
 const[value,setValue]=useState('2023-02-12');
 const [show,setShow]=useState(false);
+const performance = list?list:performanceData;
   useEffect(() => {
     if(value)
     {
-      const perform =  performanceData?.filter((item)=>item.date === value);
+      const perform =  performance?.filter((item)=>item.date === value);
       const test = perform?.map((item,key)=>{
         const target = 200;
         const workhr= 9;
@@ -62,7 +63,7 @@ const [show,setShow]=useState(false);
     <div >
     <Typography style={{color:'darkblue'}} >select a date</Typography>
       &nbsp;&nbsp;&nbsp;
-    <Input type='date'  value={value} onChange={(e)=>setValue(e.target.value)} style={{color:'lightblue'}}></Input>
+    <Input type='date'  value={value} onChange={(e)=>setValue(e.target.value)} style={{color:'#1976d2'}}></Input>
     </div>
     <br/>
     <div>
