@@ -1,8 +1,7 @@
 import react ,{ useEffect, useState }from 'react';
 import { Space, Table, Tag ,Divider,Popconfirm} from 'antd';
-import {dataSource} from '../Mock/employeeData'
 const EmployeeList = (props) =>{
-  const val= dataSource;
+  // const val= dataSource;
  
   const state = props?.data && props?.data[0]?.role;
   
@@ -56,7 +55,16 @@ const EmployeeList = (props) =>{
 let employeeData;
 const list = JSON.parse(sessionStorage.getItem("employeelist"));
 
-  const [data,setData]=useState( list?list:dataSource);
+  const [data,setData]=useState(list?list:'');
+  useEffect(()=>{
+    fetch("https://mocki.io/v1/7969c5d4-dbc7-4d90-adfb-0198ae4c48c6")
+    .then(res => res.json())
+    .then(
+      (result) => {
+        setData(result.dataSource);
+        console.log(result,'api')
+      },)
+  },[])
   
   const onDelete = (key, e) => {
     e.preventDefault();
@@ -65,12 +73,11 @@ const list = JSON.parse(sessionStorage.getItem("employeelist"));
     sessionStorage.setItem("employeelist",JSON.stringify(datas));
   }
   sessionStorage.setItem("employeelist",JSON.stringify(data));
-   return  (<div data-testid='employeelist'>
-        <h1>employee details</h1>
-        
-
-<Table dataSource={data} columns={columns} />
-    </div>
+   return  (
+   <div data-testid='employeelist'>
+    <h1>employee details</h1>
+    <Table dataSource={data} columns={columns} />
+  </div>
 )
 }
 export default EmployeeList;

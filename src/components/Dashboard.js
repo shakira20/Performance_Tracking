@@ -111,14 +111,12 @@ function setPerform (name)  {
        {leftNavbar === 'Dashboard'?<Breadcrumb.Item>Performance Gragh</Breadcrumb.Item>:<Breadcrumb.Item>{leftNavbar}</Breadcrumb.Item>}
       </Breadcrumb>
       <div style={{ background: '#fff', padding: 24, minHeight: 580 }}>
-        
        {leftNavbar === 'Dashboard' && <Gragh/>}
        {leftNavbar === 'Employee List' && <EmployeeList data={data} addEmployee={empdata} />}
        {leftNavbar === 'Add Employee' && <AddEmployee leftnavbar={changesleftnavbar} data={setData}/>}
        {leftNavbar === 'Add Store' && <AddStore leftnavbar={changesleftnavbar} product={setStore}/>}
        {leftNavbar === 'Daily Tracking' && <DailyTrack leftnavbar={changesleftnavbar} performance={setPerform}/>}
-       {/* {leftNavbar === 'History' && <History/>} */}
-      {leftNavbar === 'Product Details' && <StoreDetails data={data} addStore={storedata}/>}
+       {leftNavbar === 'Product Details' && <StoreDetails data={data} addStore={storedata}/>}
        {leftNavbar === 'Performances' && <Performances data={data} addData={performance}/>}
       </div>
     </Content>

@@ -63,18 +63,6 @@ else
   }
 }
     }
-//   if(user.role && user.role === 'Employee'){
-//     const userData = employees?employees?.filter((item)=>item.userType.toLowerCase() === user.role.toLowerCase()):dataSource?.filter((item)=>item.userType.toLowerCase() === user.role.toLowerCase());
-//     console.log(userData,'role')
-//     if(!userData.length)
-//   {
-//   setDisabled(true);
-//   }
-//   else{
-//   setDisabled(false);
-
-//   }
-//     }
   },[user])
 // console.log(user,'log')
   sessionStorage.setItem("login_user",JSON.stringify(user));
@@ -87,8 +75,11 @@ return (
   <Title style={{ color: 'white' }} level={3}>Retail Store Employee Performance Tracking System</Title>
 </Header></Layout>
 <div style={{marginTop:'150px'}}>
-    
+    <center>
+      <h3 style={{color:'blue'}}>Login</h3>
     <Form style={{marginLeft:'70px'}}>
+    <fieldset style={{width:'500px',alignContent:'center'}}>
+        <br/>
             <Form.Item  name="enter user name" rules={[
               { required: true, message: 'Please enter user name!' },
               {pattern: /^[a-zA-Z ]{2,30}$/,
@@ -130,7 +121,9 @@ return (
             <Form.Item>
                 <Button block type="primary" htmlType='submit' style={{width:'150px',marginRight:'58px'}} onClick={()=>navigate('/dashboard',{state:data})} disabled={value&&role&&pass&&!disabled?false:true}> Login
                 </Button></Form.Item>
+                </fieldset>
             </Form>
+            </center>
             </div>
 </div>
  );

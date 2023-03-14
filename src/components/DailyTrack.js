@@ -13,7 +13,10 @@ const DailyTrack = (props) => {
     const[status,setStatus]=useState('');
     const[packages,setPackage]=useState('');
     const[date,setDate]=useState('');
-    const[disabled,setDisable]=useState(false)
+    const[disabled,setDisable]=useState(false);
+    const product = JSON.parse(sessionStorage.getItem("productlist"));
+    const ProductName = product.map((item)=> item.title );
+    console.log(ProductName)
     const performance ={
         key: uuid(),
       id:employeeId,
@@ -47,6 +50,7 @@ const DailyTrack = (props) => {
         console.log('Received values of form: ', values);
       };
       console.log(status,'hey');
+      console.log(name,'ooiiii')
     return(
     <div data-testid='dailytrack'>
         <h1>DailyTrack</h1>
@@ -78,7 +82,12 @@ const DailyTrack = (props) => {
             message:'Please enter a product name'
           },
         ]}>
-                <Input placeholder='enter Product name' style={{ width: 450,marginRight:'125px' }} onChange={(e)=>setName(e.target.value)}></Input>
+                {/* <Input placeholder='enter Product name' style={{ width: 450,marginRight:'125px' }} onChange={(e)=>setName(e.target.value)}></Input> */}
+                <Select onChange={(value)=>setName(value)}  style={{ width: 450 ,marginRight:'120px'}} placeholder="enter product">
+    {ProductName.map(item =>
+      <option key={item} value={item}>{item}</option>
+    )};
+  </Select>
             </Form.Item>
             <Form.Item label="Category" name="category "  rules={[
           {
@@ -89,7 +98,7 @@ const DailyTrack = (props) => {
               message:'Please enter a valid category name'
             }
         ]}>
-                <Input placeholder='enter category' style={{ width: 450,marginRight:'89px' }} onChange={(e)=>setCategory(e.target.value)}></Input>
+                <Input placeholder='enter category' style={{ width: 450,marginRight:'93px' }} onChange={(e)=>setCategory(e.target.value)}></Input>
             </Form.Item>
             <Form.Item label="No:of Packages" name="No:of Packages"  rules={[
           {
@@ -136,7 +145,6 @@ const DailyTrack = (props) => {
         value: 'Not Completed',
         label: 'Not Completed',
       },
-      
     ]}
   />
             </Form.Item>

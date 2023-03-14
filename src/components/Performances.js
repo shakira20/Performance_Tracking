@@ -1,6 +1,5 @@
 import react ,{ useEffect, useState }from 'react';
 import { Space, Table, Tag ,Divider,Popconfirm} from 'antd';
-import dataSource from '../Mock/performanceData';
 
 const Performances = (props) =>{
 
@@ -47,17 +46,26 @@ const Performances = (props) =>{
   ];
   const list = JSON.parse(sessionStorage.getItem("performance"));
 
-  const [data,setData]=useState(list?list:dataSource);
-  let filtereddata =list?list:dataSource;
+  const [data,setData]=useState(list?list:'');
+  useEffect(()=>{
+    fetch("https://mocki.io/v1/d9c6effb-10c0-42ad-a33e-6c14cb45076d")
+    .then(res => res.json())
+    .then(
+      (result) => {
+        setData(result.dataSource);
+       sessionStorage.setItem("performance",JSON.stringify(result.dataSource));
+        console.log(result,'api performance')
+      },)
+  },[])
+  // let filtereddata =data;
   let filter; 
-  sessionStorage.setItem("performance",JSON.stringify(data));
   const state = props?.data && props?.data[0]?.role;
   const username =props?.data && props?.data[1]?.username;
   // console.log(user)
   if(state !== 'Admin')
   {
     // console.log(props.data[1].username)
-    filter = filtereddata?.filter(item => item?.name?.toLowerCase() === username?.toLowerCase());
+    filter = data && data?.filter(item => item?.name?.toLowerCase() === username?.toLowerCase());
     // setData(filtereddata)
   }
    return  (<div data-testid='performance'>

@@ -1,6 +1,5 @@
 import react, {useEffect,  useState } from 'react';
 import { Space, Table, Tag ,Divider,Popconfirm} from 'antd';
-import dataSource from '../Mock/productData';
 const StoreDetails = (props) =>{
 
   const columns = [
@@ -46,7 +45,16 @@ const StoreDetails = (props) =>{
   ].filter(item => !item.hidden);
  let productData= JSON.parse(sessionStorage.getItem("productlist"));
 
-  const [data,setData]=useState(productData?productData:dataSource);
+  const [data,setData]=useState(productData?productData:'');
+  useEffect(()=>{
+    fetch("https://mocki.io/v1/1557443a-f41d-470a-945c-508d2b01abe1")
+    .then(res => res.json())
+    .then(
+      (result) => {
+        setData(result.dataSource);
+        console.log(result,'api')
+      },)
+  },[])
   const onDelete = (key, e) => {
     e.preventDefault();
     const pro=JSON.parse(sessionStorage.getItem("productlist"));
@@ -57,10 +65,7 @@ const StoreDetails = (props) =>{
   const product = props?.addStore;
   
   sessionStorage.setItem("productlist",JSON.stringify(data));
-
- 
   
-  // console.log(data,'hi orinal shak product')
 
    return  (<div data-testid='store'>
         <h1>Store Details</h1>
