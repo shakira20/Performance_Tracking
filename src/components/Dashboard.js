@@ -80,9 +80,9 @@ function setPerform (name)  {
       <Menu.Item key='Dashboard'>
         Dashboard
     </Menu.Item>
-    <Menu.Item key='Employee List'>
+    {data[0].role === 'Admin' &&<Menu.Item key='Employee List'>
     Employee List
-    </Menu.Item>
+    </Menu.Item>}
     <Menu.Item key='Product Details'>
         Product Details
     </Menu.Item>

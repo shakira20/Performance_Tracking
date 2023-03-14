@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Form, Input,Button,Layout,Select  } from 'antd';
 import Title from 'antd/lib/typography/Title';
-import { dataSource } from '../Mock/employeeData';
 import { Typography } from '@mui/material';
 
 
@@ -33,6 +32,16 @@ const onChange = (value) => {
     userType:'Admin'
   }]
   const employees =JSON.parse(sessionStorage.getItem("employeelist"));
+  let dataSource;
+  useEffect(()=>{
+    fetch("https://mocki.io/v1/7969c5d4-dbc7-4d90-adfb-0198ae4c48c6")
+    .then(res => res.json())
+    .then(
+      (result) => {
+        dataSource=result.dataSource;
+        console.log(result,'api')
+      },)
+  },[])
   useEffect(()=>{
     if(user.username)
     {

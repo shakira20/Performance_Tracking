@@ -1,6 +1,5 @@
 import React ,{useState,useEffect}from 'react';
 import { Line } from '@ant-design/plots';
-import performanceData from '../Mock/performanceData'
 import { Input,TextField, Typography } from '@mui/material';
 // import Input from 'antd/es/input/Input';
 
@@ -11,7 +10,16 @@ const Gragh = () => {
 const [data, setData] = useState([]);
 const[value,setValue]=useState('2023-02-12');
 const [show,setShow]=useState(false);
-const performance = list?list:performanceData;
+let performance = list?list:'';
+useEffect(()=>{
+  fetch("https://mocki.io/v1/d9c6effb-10c0-42ad-a33e-6c14cb45076d")
+  .then(res => res.json())
+  .then(
+    (result) => {
+      performance=result.dataSource;
+      console.log(result,'api performance')
+    },)
+},[])
   useEffect(() => {
     if(value)
     {
