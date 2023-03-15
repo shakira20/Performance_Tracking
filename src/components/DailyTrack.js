@@ -15,7 +15,7 @@ const DailyTrack = (props) => {
     const[date,setDate]=useState('');
     const[disabled,setDisable]=useState(false);
     const product = JSON.parse(sessionStorage.getItem("productlist"));
-    const ProductName = product.map((item)=> item.title );
+    const ProductName = product && product?.map((item)=> item.title );
     console.log(ProductName)
     const performance ={
         key: uuid(),
@@ -84,7 +84,7 @@ const DailyTrack = (props) => {
         ]}>
                 {/* <Input placeholder='enter Product name' style={{ width: 450,marginRight:'125px' }} onChange={(e)=>setName(e.target.value)}></Input> */}
                 <Select onChange={(value)=>setName(value)}  style={{ width: 450 ,marginRight:'120px'}} placeholder="enter product">
-    {ProductName.map(item =>
+    {ProductName?.map(item =>
       <option key={item} value={item}>{item}</option>
     )};
   </Select>

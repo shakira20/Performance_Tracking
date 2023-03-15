@@ -12,6 +12,7 @@ import StoreDetails from "./StoreDetails";
 import Performances from "./Performances";
 import { UserOutlined,DownOutlined, SmileOutlined } from '@ant-design/icons';
 import { Dropdown, Space } from 'antd';
+import LeftNavbar from "./LeftNavBar";
 const Dashboard = () => {
   // const navigate =useNavigate();
   const items= [
@@ -71,39 +72,7 @@ function setPerform (name)  {
 </Header>
 <Layout>
   <Sider>
-    <Menu
-      defaultSelectedKeys={['Dashboard']}
-      selectedKeys={leftNavbar}
-      mode="inline"
-      onClick={({key})=>{changesleftnavbar(key)}}
-    >
-      <Menu.Item key='Dashboard'>
-        Dashboard
-    </Menu.Item>
-    {data[0].role === 'Admin' &&<Menu.Item key='Employee List'>
-    Employee List
-    </Menu.Item>}
-    <Menu.Item key='Product Details'>
-        Product Details
-    </Menu.Item>
-    {data[0].role === 'Admin' && <Menu.Item key='Add Employee'>
-    Add Employee
-    </Menu.Item>}
-    {data[0].role === 'Admin' && <Menu.Item key='Add Store'>
-    Add Store
-    </Menu.Item>}
-    {data[0].role !== 'Admin' &&<Menu.Item key='Daily Tracking'>
-    Daily Tracking
-    </Menu.Item>}
-    {/* <Menu.Item key='History'>
-    History
-    </Menu.Item> */}
-    <Menu.Item key='Performances'>
-    Performances
-    </Menu.Item>
-      
-      
-    </Menu>
+  <LeftNavbar leftNavbar={leftNavbar} data={data} setLeftNavbar={setLeftNavbar}/>
   </Sider>
   <Layout>
     <Content style={{ padding: '0 50px' }}>
