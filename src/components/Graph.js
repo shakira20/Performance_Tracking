@@ -10,29 +10,27 @@ const Gragh = () => {
 const [data, setData] = useState([]);
 const[value,setValue]=useState('2023-02-12');
 const [show,setShow]=useState(false);
-let performance = list?list:'';
+const[performance,setPerformance] = useState(list?list:'');
 useEffect(()=>{
   fetch("https://mocki.io/v1/d9c6effb-10c0-42ad-a33e-6c14cb45076d")
   .then(res => res.json())
   .then(
     (result) => {
-      performance=result.dataSource;
+      setPerformance(result.dataSource);
       console.log(result,'api performance')
     },)
 },[])
   useEffect(() => {
     if(value)
     {
-      const perform =  performance?.filter((item)=>item.date === value);
-      const test = perform?.map((item,key)=>{
+      const perform = performance && performance.filter((item)=>item.date === value);
+      const test = perform && perform.map((item,key)=>{
         const target = 200;
         const workhr= 9;
-          // let arr=[];
           const arr= (item.no_of_package/target)*(workhr/item.hours)*100;
           return(
             {
             performance:arr,
-            // no_of_package:item.no_of_package
             name:item.name
             }
           )

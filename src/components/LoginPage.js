@@ -50,7 +50,7 @@ const onChange = (value) => {
     {
   const userData = employees?employees?.filter((item)=>item.name.toLowerCase() === user.username.toLowerCase() && item.userType.toLowerCase() === user.role.toLowerCase()):dataSource?.filter((item)=>item.name.toLowerCase() === user.username.toLowerCase() && item.userType.toLowerCase() === user.role.toLowerCase());
   // console.log(userData,'data');
-  if(!userData.length)
+  if(userData?.length)
   {
   setDisabled(true);
   }

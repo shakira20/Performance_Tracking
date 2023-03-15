@@ -1,7 +1,7 @@
 import react, { useState } from 'react';
 import { Form, Input,Button,InputNumber, message ,Select} from 'antd';
 import uuid from 'react-uuid';
-
+import {employeeName,employeeId,category,productName} from  './FormValidation'
 
 const DailyTrack = (props) => {
     const[name,setName]=useState('');
@@ -56,32 +56,14 @@ const DailyTrack = (props) => {
         <h1>DailyTrack</h1>
         <Form   style={{marginLeft:'70px'}} form={form}  initialValues={{ remember: true }}
       onFinish={onFinish}>
-             <Form.Item label="Employee Name" name="Employee name "  rules={[
-              { required: true, message: 'Please enter your name!' },
-              {pattern: /^[a-zA-Z ]{2,30}$/,
-              message:'Please enter a valid name'
-            }
-              ]}>
+             <Form.Item label="Employee Name" name="Employee name "  rules={employeeName}>
                 <Input placeholder='enter your name' style={{ width: 450,marginRight:'135px' }} onChange={(e)=>setUsername(e.target.value)}
            required></Input>
             </Form.Item>
-            <Form.Item label="EmployeeId" name="Employee_id"  rules={[
-          {
-            required: true,
-            message: 'Please enter your employee Id!'
-          },
-          {pattern:/^(\d{3})(\d{3})(\d{4})|([A-Z]{3})(\d{4})$/,
-              message:'Please enter a valid Id'
-          },
-        ]}>
+            <Form.Item label="EmployeeId" name="Employee_id"  rules={employeeId}>
             <Input  placeholder="enter  your ID" style={{ width: 450 ,marginRight:'108px'}} onChange={(e)=>setEmployeeId(e.target.value)}/>
             </Form.Item>
-            <Form.Item label="Product Name" name="Product name"  rules={[
-          {
-            required: true,
-            message:'Please enter a product name'
-          },
-        ]}>
+            <Form.Item label="Product Name" name="Product name"  rules={productName}>
                 {/* <Input placeholder='enter Product name' style={{ width: 450,marginRight:'125px' }} onChange={(e)=>setName(e.target.value)}></Input> */}
                 <Select onChange={(value)=>setName(value)}  style={{ width: 450 ,marginRight:'120px'}} placeholder="enter product">
     {ProductName?.map(item =>
@@ -89,15 +71,7 @@ const DailyTrack = (props) => {
     )};
   </Select>
             </Form.Item>
-            <Form.Item label="Category" name="category "  rules={[
-          {
-            required: true,
-            message:'enter category'
-          },
-          {pattern: /^[a-zA-Z ]{2,30}$/,
-              message:'Please enter a valid category name'
-            }
-        ]}>
+            <Form.Item label="Category" name="category "  rules={category}>
                 <Input placeholder='enter category' style={{ width: 450,marginRight:'93px' }} onChange={(e)=>setCategory(e.target.value)}></Input>
             </Form.Item>
             <Form.Item label="No:of Packages" name="No:of Packages"  rules={[
