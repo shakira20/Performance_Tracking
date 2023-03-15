@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Form, Input,Button,Layout,Select  } from 'antd';
 import Title from 'antd/lib/typography/Title';
 import { Typography } from '@mui/material';
-
+import {login_password,login_username}from './FormValidation'
 
 const LoginPage = () =>{
 const navigate = useNavigate();
@@ -11,6 +11,7 @@ const [value,setValue]=useState('');
 const [role,setRole]=useState('');
 const [pass,setPass] =useState('');
 const[disabled,setDisabled]=useState(false);
+console.log(login_username,'form')
 let data=[];
 const { Header, Footer, Sider, Content } = Layout;
 const onChange = (value) => {
@@ -89,18 +90,10 @@ return (
     <Form style={{marginLeft:'70px'}}>
     <fieldset style={{width:'500px',alignContent:'center'}}>
         <br/>
-            <Form.Item  name="enter user name" rules={[
-              { required: true, message: 'Please enter user name!' },
-              {pattern: /^[a-zA-Z ]{2,30}$/,
-              message:'Please enter a valid name'
-            }
-              ]}>
+            <Form.Item  name="enter user name" rules={login_username}>
                 <Input placeholder='enter user name' style={{ width: 450,marginRight:'125px' }} onChange={onChanging}></Input>
             </Form.Item >
-            <Form.Item  name="enter password"  rules={[
-              { required: true, message: 'Please enter user password!' },
-              
-              ]}>
+            <Form.Item  name="enter password"  rules={login_password}>
                 <Input.Password placeholder='enter password' style={{ width: 450,marginRight:'125px' }} onChange={(e)=>setPass(e.target.value)}></Input.Password>
             </Form.Item>
             <Form.Item  name="enter role">

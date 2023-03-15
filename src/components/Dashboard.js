@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import dailyTrack from "./DailyTrack";
 import {Layout, Avatar, Menu, Icon, Breadcrumb, Button} from 'antd';
 import Title from 'antd/lib/typography/Title';
 import {BrowserRouter, Route, Routes, useNavigate,Switch ,useLocation, Link} from 'react-router-dom';
