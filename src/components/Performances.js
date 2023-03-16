@@ -3,7 +3,7 @@ import { Space, Table, Tag ,Divider,Popconfirm} from 'antd';
 
 const Performances = (props) =>{
 
-  
+  const user= JSON.parse(sessionStorage.getItem("login_user"));
   const columns = [
     {title:'Employee Id',
     dataIndex:'id',
@@ -59,7 +59,7 @@ const Performances = (props) =>{
   },[])
   // let filtereddata =data;
   let filter; 
-  const state = props?.data && props?.data[0]?.role;
+  const state = user && user?.role;
   const username =props?.data && props?.data[1]?.username;
   // console.log(user)
   if(state !== 'Admin')

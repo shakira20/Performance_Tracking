@@ -4,43 +4,47 @@ import { Link, useNavigate } from "react-router-dom";
 
 const LeftNavbar = ({
     leftNavbar,
-    data,setLeftNavbar
+    setLeftNavbar
 }) =>{
+  const data= JSON.parse(sessionStorage.getItem("login_user"));
     function changesleftnavbar (name)  {
         setLeftNavbar(name);
-       
+        window.location.href=name;
+      
   }
+  
     return (
   <div data-testid='menu'>
+   
     <Menu
       defaultSelectedKeys={['Dashboard']}
       selectedKeys={leftNavbar}
       mode="inline"
-      onClick={({key})=>{changesleftnavbar(key)}}
+      onClick={({key})=>{changesleftnavbar(key);}}
     >
-      <Menu.Item key='Dashboard'>
+      <Menu.Item key='/dashboard'>
         Dashboard
     </Menu.Item>
-    {data && data[0]?.role === 'Admin' &&<Menu.Item key='Employee List'>
+    {data && data?.role === 'Admin' &&<Menu.Item key='/employeelist'>
     Employee List
     </Menu.Item>}
-    <Menu.Item key='Product Details'>
+    <Menu.Item key='/productDetails'>
         Product Details
     </Menu.Item>
-    {data && data[0]?.role === 'Admin' && <Menu.Item key='Add Employee'>
+    {data && data?.role === 'Admin' && <Menu.Item key='/addEmployee'>
     Add Employee
     </Menu.Item>}
-    {data && data[0]?.role === 'Admin' && <Menu.Item key='Add Store'>
+    {data && data?.role === 'Admin' && <Menu.Item key='/addStore'>
     Add Store
     </Menu.Item>}
-    {data && data[0]?.role !== 'Admin' &&<Menu.Item key='Daily Tracking'>
+    {data && data?.role !== 'Admin' &&<Menu.Item key='/dailyTracking'>
     Daily Tracking
     </Menu.Item>}
-    <Menu.Item key='Performances'>
+    <Menu.Item key='/Performances'>
     Performances
-    </Menu.Item>  
-      
+    </Menu.Item>     
     </Menu>
+
   </div>  
 )
 };

@@ -1,7 +1,7 @@
 import react, {useEffect,  useState } from 'react';
 import { Space, Table, Tag ,Divider,Popconfirm} from 'antd';
 const StoreDetails = (props) =>{
-
+  const user= JSON.parse(sessionStorage.getItem("login_user"));
   const columns = [
     {
       title: 'Product Name',
@@ -35,7 +35,7 @@ const StoreDetails = (props) =>{
       },{
     title: 'Action',
     key: 'action',
-    hidden:(props?.data && props?.data[0]?.role === 'Admin')?false:true,
+    hidden:(user && user?.role === 'Admin')?false:true,
     render:(text, record, index) => <span style={{fontWeight: 'bold'}}>
       <Popconfirm title="Sure to delete?" onConfirm={(e) => {onDelete(record.key, e)}}>
         <a>Delete</a>

@@ -4,7 +4,7 @@ const EmployeeList = (props) =>{
   // const val= dataSource;
  
   const state = props?.data && props?.data[0]?.role;
-  
+  const user= JSON.parse(sessionStorage.getItem("login_user"));
   const columns = [
     {
       title: 'Employee Id',
@@ -44,7 +44,7 @@ const EmployeeList = (props) =>{
      {
         title: 'Action',
         key: 'action',
-        hidden:(props?.data && props?.data[0]?.role === 'Admin')?false:true,
+        hidden:(user && user?.role === 'Admin')?false:true,
         render:(text, record, index) => <span style={{fontWeight: 'bold'}}>
           <Popconfirm title="Sure to delete?" onConfirm={(e) => {onDelete(record.key, e)}} >
             <a>Delete</a>

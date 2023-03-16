@@ -80,10 +80,7 @@ else
 return (
 
     <div data-testid='login'>
-        <Layout>
-        <Header style={{ padding: 10 ,height:'100px'}}>
-  <Title style={{ color: 'white' }} level={3}>Retail Store Employee Performance Tracking System</Title>
-</Header></Layout>
+        
 <div style={{marginTop:'150px'}}>
     <center>
       <h3 style={{color:'blue'}}>Login</h3>
