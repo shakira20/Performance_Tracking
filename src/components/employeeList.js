@@ -61,7 +61,10 @@ const list = JSON.parse(sessionStorage.getItem("employeelist"));
     .then(res => res.json())
     .then(
       (result) => {
-        setData(result.dataSource);
+        if(list === '')
+        {
+          setData(result.dataSource);
+        }
         console.log(result,'api')
       },)
   },[])

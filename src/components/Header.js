@@ -13,7 +13,7 @@ const Header = () => {
         {
           key: '1',
           label: (
-          <a target="_blank" href='/'>Sign Out</a>
+          <a onClick={()=>window.location.href='/'}>Sign Out</a>
           ),
     
         },
@@ -25,7 +25,7 @@ const Header = () => {
 <Header style={{ padding: 10 ,height:'100px'}}>
   <div  style={{ float: 'right' ,paddingLeft:'100px'}}>
   
-{data && <Dropdown menu={{ items }}>
+{window.location.pathname !== '/' && <Dropdown menu={{ items }}>
     <a onClick={(e) => e.preventDefault()}>
       <Space>
 <p style={{ color: 'white' }}>{data.username}</p>

@@ -49,8 +49,7 @@ const onChange = (value) => {
     if(user.role && user.role === 'Employee')
     {
   const userData = employees?employees?.filter((item)=>item.name.toLowerCase() === user.username.toLowerCase() && item.userType.toLowerCase() === user.role.toLowerCase()):dataSource?.filter((item)=>item.name.toLowerCase() === user.username.toLowerCase() && item.userType.toLowerCase() === user.role.toLowerCase());
-  // console.log(userData,'data');
-  if(userData?.length)
+  if(!userData?.length)
   {
   setDisabled(true);
   }
@@ -74,9 +73,9 @@ else
 }
     }
   },[user])
-// console.log(user,'log')
+console.log(user,'log')
   sessionStorage.setItem("login_user",JSON.stringify(user));
-  // console.log(value,role,disabled);
+  console.log(value,role,disabled);
 return (
 
     <div data-testid='login'>
@@ -118,7 +117,7 @@ return (
             </Form.Item>
             {disabled && <Typography style={{color:'red'}}>User does not exist </Typography>}
             <Form.Item>
-                <Button block type="primary" htmlType='submit' style={{width:'150px',marginRight:'58px'}} onClick={()=>navigate('/dashboard',{state:data})} disabled={value&&role&&pass&&!disabled?false:true}> Login
+                <Button block type="primary" htmlType='submit' style={{width:'150px',marginRight:'58px'}} onClick={()=>window.location.href ='/dashboard'} disabled={value&&role&&pass&&!disabled?false:true}> Login
                 </Button></Form.Item>
                 </fieldset>
             </Form>

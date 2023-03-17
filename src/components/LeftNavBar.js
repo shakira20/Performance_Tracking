@@ -12,7 +12,7 @@ const LeftNavbar = ({
         window.location.href=name;
       
   }
-  
+  console.log(leftNavbar)
     return (
   <div data-testid='menu'>
    

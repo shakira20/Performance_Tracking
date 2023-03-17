@@ -28,14 +28,14 @@ const AddEmployee = (props) =>{
         if(sessionStorage.getItem("employeelist") !== 'undefined')
           {
            const employeeData= JSON.parse(sessionStorage.getItem("employeelist"));
-            if (!employeeData.includes(person) && Object.keys(person).length ) {
+            if (!employeeData?.includes(person) && Object.keys(person).length ) {
               employeeData.push(person);
             }
             console.log(employeeData,'perforamce data2')
 
             sessionStorage.setItem("employeelist",JSON.stringify(employeeData));
         }
-             
+       window.location.href='/employeelist'      
     }
     return(
     <div data-testid='add-employee'>

@@ -16,7 +16,7 @@ import StoreDetails from "./components/StoreDetails";
 import Performances from "./components/Performances";
 function App() {
   const { Sider, Content } = Layout;
-  const [leftNavbar,setLeftNavbar] = useState('Dashboard');
+  const [leftNavbar,setLeftNavbar] = useState('/dashboard');
   const [empdata,setempData] =useState({});
     const [storedata,setstoreData] =useState({});
     const[performance,setPerformance]=useState({});

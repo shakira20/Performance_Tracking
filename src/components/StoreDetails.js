@@ -51,7 +51,7 @@ const StoreDetails = (props) =>{
     .then(res => res.json())
     .then(
       (result) => {
-        if(!productData)
+        if(productData === '')
         {
           setData(result.dataSource);
         }
