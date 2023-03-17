@@ -17,7 +17,7 @@ const LeftNavbar = ({
   <div data-testid='menu'>
    
     <Menu
-      defaultSelectedKeys={['Dashboard']}
+      defaultSelectedKeys={['/dashboard']}
       selectedKeys={leftNavbar}
       mode="inline"
       onClick={({key})=>{changesleftnavbar(key);}}

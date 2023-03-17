@@ -51,7 +51,11 @@ const StoreDetails = (props) =>{
     .then(res => res.json())
     .then(
       (result) => {
-        setData(result.dataSource);
+        if(!productData)
+        {
+          setData(result.dataSource);
+        }
+        
         console.log(result,'api')
       },)
   },[])

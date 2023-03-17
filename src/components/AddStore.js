@@ -22,19 +22,18 @@ const AddStore = (props) =>{
     }
     
 function changeleftnavbar (){
-    props.leftnavbar('Product Details');
+    props.leftnavbar('/productDetails');
     props.product(product);
     if(sessionStorage.getItem("productlist") !== 'undefined')
     {
       const productData= JSON.parse(sessionStorage.getItem("productlist"));
-      if (!productData.includes(product) && Object.keys(product).length ) {
+      if (!productData?.includes(product) && Object.keys(product).length ) {
         productData.push(product);
       }
     sessionStorage.setItem("productlist",JSON.stringify(productData));
-      
        
     }
-
+   window.location.href='/productDetails'
 }
 return (
     <div data-testid='add-store'>
