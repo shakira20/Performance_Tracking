@@ -60,7 +60,7 @@ const Performances = (props) =>{
   // let filtereddata =data;
   let filter; 
   const state = user && user?.role;
-  const username =props?.data && props?.data[1]?.username;
+  const username =user && user?.username;
   // console.log(user)
   if(state !== 'Admin')
   {

@@ -2,7 +2,7 @@ import './App.css';
 import LoginPage from './components/LoginPage';
 import Dashboard from './components/Dashboard'
 // import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import {BrowserRouter, Route, Routes } from 'react-router-dom'
+import {BrowserRouter, Route, Routes, useLocation } from 'react-router-dom'
 import {Layout, Avatar, Menu, Icon, Breadcrumb, Button} from 'antd';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -20,6 +20,7 @@ function App() {
   const [empdata,setempData] =useState({});
     const [storedata,setstoreData] =useState({});
     const[performance,setPerformance]=useState({});
+    console.log(window.location.pathname,'path')
 
     function changesleftnavbar (name)  {
           setLeftNavbar(name);
@@ -40,7 +41,7 @@ function setPerform (name)  {
     <Layout>
       <Header/>
       <Layout> 
-  { window.location.href&&
+  { window.location.pathname !== "/"&&
   <Sider>
   <LeftNavbar leftNavbar={leftNavbar} setLeftNavbar={setLeftNavbar}/>
   </Sider>}
