@@ -1,7 +1,7 @@
 import react, { useState } from 'react';
 import { Form, Input,Button,InputNumber, message ,Select} from 'antd';
 import uuid from 'react-uuid';
-import {employeeName,employeeId,category,productName} from  './FormValidation'
+import {employeeName,employeeIdRule,categoryRule,productName} from  './FormValidation'
 
 const DailyTrack = (props) => {
     const[name,setName]=useState('');
@@ -31,7 +31,7 @@ const DailyTrack = (props) => {
     console.log(performance,'emp-perform');
     
     function changeleftnavbar (){
-        props.leftnavbar('Performances')
+        props.leftnavbar('/Performances');
         props.performance(performance);
         if(sessionStorage.getItem("performance") !== 'undefined')
     {
@@ -45,6 +45,7 @@ const DailyTrack = (props) => {
       sessionStorage.setItem("performance",JSON.stringify(data));
        
     }
+    window.location.href='/Performances'
     }
     const onFinish = values => {
         console.log('Received values of form: ', values);
@@ -60,7 +61,7 @@ const DailyTrack = (props) => {
                 <Input placeholder='enter your name' style={{ width: 450,marginRight:'135px' }} onChange={(e)=>setUsername(e.target.value)}
            required></Input>
             </Form.Item>
-            <Form.Item label="EmployeeId" name="Employee_id"  rules={employeeId}>
+            <Form.Item label="EmployeeId" name="Employee_id"  rules={employeeIdRule}>
             <Input  placeholder="enter  your ID" style={{ width: 450 ,marginRight:'108px'}} onChange={(e)=>setEmployeeId(e.target.value)}/>
             </Form.Item>
             <Form.Item label="Product Name" name="Product name"  rules={productName}>
@@ -71,7 +72,7 @@ const DailyTrack = (props) => {
     )};
   </Select>
             </Form.Item>
-            <Form.Item label="Category" name="category "  rules={category}>
+            <Form.Item label="Category" name="category "  rules={categoryRule}>
                 <Input placeholder='enter category' style={{ width: 450,marginRight:'93px' }} onChange={(e)=>setCategory(e.target.value)}></Input>
             </Form.Item>
             <Form.Item label="No:of Packages" name="No:of Packages"  rules={[

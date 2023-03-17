@@ -45,6 +45,7 @@ const Performances = (props) =>{
       },
   ];
   const list = JSON.parse(sessionStorage.getItem("performance"));
+  console.log(list,'list')
 
   const [data,setData]=useState(list?list:'');
   useEffect(()=>{
@@ -52,11 +53,14 @@ const Performances = (props) =>{
     .then(res => res.json())
     .then(
       (result) => {
-        setData(result.dataSource);
-       sessionStorage.setItem("performance",JSON.stringify(result.dataSource));
+       if(!list)
+       {
+        setData(result.dataSource)
+       }
         console.log(result,'api performance')
       },)
   },[])
+  
   // let filtereddata =data;
   let filter; 
   const state = user && user?.role;
@@ -68,6 +72,7 @@ const Performances = (props) =>{
     filter = data && data?.filter(item => item?.name?.toLowerCase() === username?.toLowerCase());
     // setData(filtereddata)
   }
+  sessionStorage.setItem("performance",JSON.stringify(data));
    return  (<div data-testid='performance'>
        {state !== 'Admin'?<h1>History of my performance</h1>: <h1>Performances of the Employees</h1>}
         

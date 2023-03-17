@@ -18,12 +18,15 @@ useEffect(()=>{
     (result) => {
       setPerformance(result.dataSource);
       console.log(result,'api performance')
+      console.log(performance,'ooi')
     },)
 },[])
   useEffect(() => {
     if(value)
     {
+      console.log(performance,'dfgghjj')
       const perform = performance && performance.filter((item)=>item.date === value);
+      console.log(perform,'perform');
       const test = perform && perform.map((item,key)=>{
         const target = 200;
         const workhr= 9;
@@ -37,6 +40,8 @@ useEffect(()=>{
         })
 
         setData(test);
+        console.log(data,'dtt');
+        console.log(value);
         // sessionStorage.setItem("data",test);
         if(!test.length)
         {
@@ -50,6 +55,7 @@ useEffect(()=>{
 
   // const asyncFetch = () => {
   //   ;
+  console.log(data)
   const config = {
     data,
     padding: 'auto',

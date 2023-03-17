@@ -17,7 +17,7 @@ export const employeeName = [
   }
     ];
 
-export const employeeId = [
+export const employeeIdRule = [
     {
       required: true,
       message: 'Please enter your employee Id!'
@@ -32,7 +32,7 @@ export const employeeId = [
       message:'Please enter a product name'
     },
   ];
-  export const category =[
+  export const categoryRule =[
     {
       required: true,
       message:'enter category'

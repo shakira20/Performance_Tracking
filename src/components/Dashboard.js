@@ -15,10 +15,7 @@ import LeftNavbar from "./LeftNavBar";
 import Header from "./Header";
 import Footer from "./Footer";
 const Dashboard = () => {
-  // const navigate =useNavigate();
   
-    
-// const location = useLocation();
 
     const { Sider, Content } = Layout;
     const [leftNavbar,setLeftNavbar] = useState('Dashboard');
